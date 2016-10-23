@@ -1,50 +1,37 @@
-import { createAction, Action } from 'redux-actions';
-import { assign } from 'lodash';
+import * as interfaces from './interfaces'
+import * as types from './constants'
+import {Todo}       from './model';
 
-import { Todo } from './model';
 
-export const ADD_TODO = 'ADD_TODO';
-export const DELETE_TODO = 'DELETE_TODO';
-export const EDIT_TODO = 'EDIT_TODO';
-export const COMPLETE_TODO = 'COMPLETE_TODO';
-export const COMPLETE_ALL = 'COMPLETE_ALL';
-export const CLEAR_COMPLETED = 'CLEAR_COMPLETED';
+function addTodo(text: string, completed: boolean): interfaces.IAddTodo {
+    return { type: types.ADD_TODO, text: text, completed: completed };
+}
 
-const addTodo = createAction<Todo>(
-  ADD_TODO,
-  (text: string) => ({ text, completed: false })
-);
+function deleteTodo(todo: Todo): interfaces.IDeleteTodo {
+    return { type: types.DELETE_TODO, todo: todo };
+}
 
-const deleteTodo = createAction<Todo>(
-  DELETE_TODO,
-  (todo: Todo) => todo
-);
+function editTodo(todo: Todo, text: string): interfaces.IEditTodo {
+    return { type: types.EDIT_TODO, todo: todo, text: text };
+}
 
-const editTodo = createAction<Todo>(
-  EDIT_TODO,
-  (todo: Todo, newText: string) => <Todo>assign(todo, {text: newText})
-);
+function completeTodo(todo: Todo): interfaces.ICompleteTodo {
+    return { type: types.COMPLETE_TODO, todo };
+}
 
-const completeTodo = createAction<Todo>(
-  COMPLETE_TODO,
-  (todo: Todo) => todo
-)
+function completeAll(): interfaces.ICompleteAll {
+    return { type: types.COMPLETE_ALL };
+}
 
-const completeAll = createAction<void>(
-  COMPLETE_ALL,
-  () => {}
-)
-
-const clearCompleted = createAction<void>(
-  CLEAR_COMPLETED,
-  () => {}
-);
+function clearCompleted(): interfaces.IClearCompleted {
+    return { type: types.CLEAR_COMPLETED };
+}
 
 export {
-  addTodo,
-  deleteTodo,
-  editTodo,
-  completeTodo,
-  completeAll,
-  clearCompleted
+    addTodo,
+    deleteTodo,
+    editTodo,
+    completeTodo,
+    completeAll,
+    clearCompleted
 }

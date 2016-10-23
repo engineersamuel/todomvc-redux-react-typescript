@@ -1,6 +1,6 @@
-import { IDispatch } from 'redux';
+import { Dispatch } from 'redux/index.d'
 import { connect } from 'react-redux';
-import * as React from 'react';
+import React from 'react';
 
 import {
   Header,
@@ -16,7 +16,7 @@ import {
 
 interface AppProps {
   todos: model.Todo[];
-  dispatch: IDispatch;
+  dispatch: Dispatch<any>;
 }
 
 class App extends React.Component<AppProps, void> {
@@ -25,7 +25,7 @@ class App extends React.Component<AppProps, void> {
 
     return (
       <div className="todoapp">
-        <Header addTodo={(text: string) => dispatch(addTodo(text))} />
+        <Header addTodo={(text: string) => dispatch(addTodo(text, false))} />
         <MainSection
             todos={todos}
             editTodo={(t,s) => dispatch(editTodo(t, s))}

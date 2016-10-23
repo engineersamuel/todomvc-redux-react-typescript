@@ -1,17 +1,23 @@
 {
-  "version": "1.8.9",
+  "version": "2.0.3",
+  "compileOnSave": false,
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "jsx": "react",
+    "target": "es6",
     "sourceMap": true,
+    "jsx": "react",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "dist"
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "@types"
+    ],
+    "types": ["node"]
   },
   "exclude": [
-    "dist",
     "node_modules",
-    "typings"
+    "bower_components"
   ]
 }

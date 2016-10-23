@@ -8,12 +8,13 @@ module.exports = function(options) {
   var Renderer = require("../config/SimpleRenderer.js");
 
   // load bundle information from stats
-  var stats = options.devServer ? require("../build/stats-dev.json") : require("../build/stats.json");
+  // var stats = options.devServer ? require("../build/stats-dev.json") : require("../build/stats.json");
 
   var publicPath = stats.publicPath;
 
   var renderer = new Renderer({
-    styleUrl: options.separateStylesheet && (publicPath + "todos.css?" + stats.hash),
+    // styleUrl: options.separateStylesheet && (publicPath + "todos.css?" + stats.hash),
+    styleUrl: options.separateStylesheet && (publicPath + "todos.css"),
     scriptUrl: publicPath + [].concat(stats.assetsByChunkName.todos)[0]
   });
 
