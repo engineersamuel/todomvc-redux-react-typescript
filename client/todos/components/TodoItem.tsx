@@ -41,35 +41,25 @@ class TodoItem extends React.Component<TodoItemProps, TodoItemState> {
 
     let element;
     if (this.state.editing) {
-      element = (
-          <TodoTextInput text={todo.text}
-                         editing={this.state.editing}
-                         onSave={(text) => this.handleSave(todo, text)}/>
-      );
+      element = <TodoTextInput text={todo.text} editing={this.state.editing} onSave={(text) => this.handleSave(todo, text)} />;
     } else {
       element = (
           <div className="view">
-            <input className="toggle"
-                   type="checkbox"
-                   checked={todo.completed}
-                   onChange={() => completeTodo(todo)}/>
+            <input className="toggle" type="checkbox" checked={todo.completed} onChange={() => completeTodo(todo)} />
             <label onDoubleClick={this.handleDoubleClick.bind(this)}>
               {todo.text}
             </label>
-            <button className="destroy"
-                    onClick={() => deleteTodo(todo)}/>
+            <button className="destroy" onClick={() => deleteTodo(todo)}/>
           </div>
       );
     }
 
-    return (
-        <li className={classNames({
-        completed: todo.completed,
-        editing: this.state.editing
-      })}>
-          {element}
-        </li>
-    );
+    const liClasses = classNames({
+      completed: todo.completed,
+      editing: this.state.editing
+    });
+
+    return <li className={liClasses}>{element}</li>;
   }
 }
 

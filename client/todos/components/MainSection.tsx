@@ -96,15 +96,6 @@ class MainSection extends React.Component<MainSectionProps, MainSectionState> {
             todo.completed ? count + 1 : count,
         0
     );
-
-    // {filteredTodos.map(todo =>
-    //     <TodoItem
-    //         key={todo.id}
-    //         todo={todo}
-    //         editTodo={editTodo}
-    //         completeTodo={completeTodo}
-    //         deleteTodo={deleteTodo}/>
-    // )}
     return (
         <section className="main">
           {this.renderToggleAll(completedCount)}
